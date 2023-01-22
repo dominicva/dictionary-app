@@ -1,32 +1,48 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import "./App.css";
+import searchIcon from "./assets/images/icon-search.svg";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div className="m-0 p-4">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount(count => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div className="p-4">
+      <header className="flex items-center justify-between">
+        <div>logo</div>
+        <select name="font" id="font">
+          <option value="">Sans Serif</option>
+          <option value="">Serif</option>
+          <option value="">Mono</option>
+        </select>
+        <input type="checkbox" className="block" />
+      </header>
+      <form className="mt-6 mb-7 flex justify-center">
+        <div>
+          <input type="text" placeholder="Search for any word" />
+          <button>
+            <img src={searchIcon} alt="Search" />
+          </button>
+        </div>
+      </form>
+      <section>
+        <div className="mb-8 flex justify-between">
+          <div>
+            <h1>keyboard</h1>
+            <p>/'ki:add</p>
+          </div>
+          <button>Play</button>
+        </div>
+        <h2>Noun</h2>
+        <h3>Meaning</h3>
+        <ul>
+          <li>defino</li>
+          <li>lorem</li>
+          <li>ipsum</li>
+        </ul>
+        <hr />
+        <div>
+          <h4>Source</h4>
+          <a href="https://en.wiktionary.org/wiki/keyboard" target="_blank">
+            https://en.wiktionary.org/wiki/keyboard
+          </a>
+        </div>
+      </section>
     </div>
   );
 }
