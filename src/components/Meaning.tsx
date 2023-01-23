@@ -5,10 +5,10 @@ export default function Meaning({ partOfSpeech, definitions, synonyms }) {
       <h3 className="mb-4">Meaning</h3>
       <ul>
         {definitions.map(({ definition, example }) => (
-          <>
-            <li key={`${definition}${Math.random()}`}>{definition}</li>
+          <li key={`${definition}${Math.random()}`}>
+            {definition}
             {example ? <q>{example}</q> : null}
-          </>
+          </li>
         ))}
       </ul>
       <div>

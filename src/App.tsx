@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Meaning from "./components/Meaning";
+import logo from "./assets/images/logo.svg";
 import searchIcon from "./assets/images/icon-search.svg";
 
 function App() {
@@ -41,7 +42,9 @@ function App() {
   return (
     <div className="p-4">
       <header className="flex items-center justify-between">
-        <div>logo</div>
+        <div>
+          <img src={logo} alt="Logo" />
+        </div>
         <select name="font" id="font">
           <option value="">Sans Serif</option>
           <option value="">Serif</option>
@@ -72,6 +75,7 @@ function App() {
 
         {meanings.map(({ partOfSpeech, definitions, synonyms }) => (
           <Meaning
+            key={`${partOfSpeech}${Math.random()}`}
             partOfSpeech={partOfSpeech}
             definitions={definitions}
             synonyms={synonyms}
