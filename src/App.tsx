@@ -76,7 +76,7 @@ function App() {
       <section>
         <div className="mb-8 flex justify-between">
           <div>
-            <h1 className="mb-2 text-3xl font-bold">{word}</h1>
+            <h1 className="mb-2 font-sans text-3xl">{word}</h1>
             <p className="text-lg text-purple-500">/{phonetic}</p>
           </div>
           <button>
