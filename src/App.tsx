@@ -4,6 +4,7 @@ import Meaning from "./components/Meaning";
 import logo from "./assets/images/logo.svg";
 import moonIcon from "./assets/images/icon-moon.svg";
 import searchIcon from "./assets/images/icon-search.svg";
+import Search from "./components/Search";
 
 function App() {
   const [word, setWord] = useState("");
@@ -45,19 +46,8 @@ function App() {
   return (
     <div className={`p-6 ${theme}`}>
       <Header />
+      <Search onSubmit={handleSubmit} />
 
-      <form className="mt-6 mb-7 flex" onSubmit={handleSubmit}>
-        <div className="relative w-80">
-          <input
-            type="text"
-            placeholder="Search for any word"
-            className="h-12 w-full rounded-2xl border-none bg-gray-200"
-          />
-          <button className="absolute right-4 top-1/3">
-            <img src={searchIcon} alt="Search" />
-          </button>
-        </div>
-      </form>
       <section>
         <div className="mb-8 flex justify-between">
           <div>
