@@ -2,14 +2,15 @@ import { useState } from "react";
 import Header from "./components/Header";
 import Search from "./components/Search";
 import Results from "./components/Results";
+import { ThemeContext } from "./Contexts";
 
 function App() {
+  const [theme, setTheme] = useState("light");
   const [word, setWord] = useState("");
   const [phonetic, setPhonetic] = useState("");
   const [audioUrl, setAudioUrl] = useState("");
   const [source, setSource] = useState("");
   const [meanings, setMeanings] = useState([]);
-  const [theme, setTheme] = useState("dark");
 
   async function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
@@ -41,17 +42,19 @@ function App() {
   }
 
   return (
-    <div className={`p-6 ${theme}`}>
-      <Header />
-      <Search onSubmit={handleSubmit} />
-      <Results
-        word={word}
-        phonetic={phonetic}
-        audioUrl={audioUrl}
-        source={source}
-        meanings={meanings}
-      />
-    </div>
+    <ThemeContext.Provider value={theme}>
+      <div className={`bg-white p-6 dark:bg-black`}>
+        <Header setTheme={setTheme} />
+        <Search onSubmit={handleSubmit} />
+        <Results
+          word={word}
+          phonetic={phonetic}
+          audioUrl={audioUrl}
+          source={source}
+          meanings={meanings}
+        />
+      </div>
+    </ThemeContext.Provider>
   );
 }
 
