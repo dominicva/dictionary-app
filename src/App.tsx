@@ -1,10 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Header from "./components/Header";
-import Meaning from "./components/Meaning";
-import logo from "./assets/images/logo.svg";
-import moonIcon from "./assets/images/icon-moon.svg";
-import searchIcon from "./assets/images/icon-search.svg";
 import Search from "./components/Search";
+import Results from "./components/Results";
 
 function App() {
   const [word, setWord] = useState("");
@@ -47,37 +44,13 @@ function App() {
     <div className={`p-6 ${theme}`}>
       <Header />
       <Search onSubmit={handleSubmit} />
-
-      <section>
-        <div className="mb-8 flex justify-between">
-          <div>
-            <h1 className="mb-2 font-sans text-3xl">{word}</h1>
-            <p className="text-lg text-purple-500">/{phonetic}</p>
-          </div>
-          <button>
-            <a href={audioUrl} target="_blank">
-              Play
-            </a>
-          </button>
-        </div>
-
-        {meanings.map(({ partOfSpeech, definitions, synonyms }) => (
-          <Meaning
-            key={`${partOfSpeech}${Math.random()}`}
-            partOfSpeech={partOfSpeech}
-            definitions={definitions}
-            synonyms={synonyms}
-          />
-        ))}
-
-        <hr className="mt-8 mb-6" />
-        <div>
-          <h4>Source</h4>
-          <a href={source} target="_blank">
-            {source}
-          </a>
-        </div>
-      </section>
+      <Results
+        word={word}
+        phonetic={phonetic}
+        audioUrl={audioUrl}
+        source={source}
+        meanings={meanings}
+      />
     </div>
   );
 }
