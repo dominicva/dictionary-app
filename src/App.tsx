@@ -2,10 +2,12 @@ import { useState } from "react";
 import Header from "./components/Header";
 import Search from "./components/Search";
 import Results from "./components/Results";
-import { ThemeContext } from "./Contexts";
+import { FontContext, ThemeContext } from "./Contexts";
+import Layout from "./components/Layout";
 
 function App() {
   const [theme, setTheme] = useState("light");
+  const [fontType, setFontType] = useState("sans");
   const [word, setWord] = useState("");
   const [phonetic, setPhonetic] = useState("");
   const [audioUrl, setAudioUrl] = useState("");
@@ -43,27 +45,31 @@ function App() {
 
   return (
     <ThemeContext.Provider value={theme}>
-      <Layout>
-        <Header setTheme={setTheme} />
-        <Search onSubmit={handleSubmit} />
-        <Results
-          word={word}
-          phonetic={phonetic}
-          audioUrl={audioUrl}
-          source={source}
-          meanings={meanings}
-        />
-      </Layout>
+      <FontContext.Provider value={fontType}>
+        <Layout>
+          <Header setFontType={setFontType} setTheme={setTheme} />
+          <Search onSubmit={handleSubmit} />
+          <Results
+            word={word}
+            phonetic={phonetic}
+            audioUrl={audioUrl}
+            source={source}
+            meanings={meanings}
+          />
+        </Layout>
+      </FontContext.Provider>
     </ThemeContext.Provider>
   );
 }
 
-function Layout({ children }) {
-  return (
-    <div className="h-screen overflow-scroll bg-white p-6 pb-12 dark:bg-gray-darkest">
-      {children}
-    </div>
-  );
-}
+// function Layout({ children }) {
+//   return (
+//     <div
+//       className={`h-screen overflow-scroll bg-white p-6 pb-12 font-${font} dark:bg-gray-darkest`}
+//     >
+//       {children}
+//     </div>
+//   );
+// }
 
 export default App;

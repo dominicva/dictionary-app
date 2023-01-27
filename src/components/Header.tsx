@@ -1,11 +1,16 @@
 import { useContext } from "react";
-import { ThemeContext } from "../Contexts";
+import { FontContext, ThemeContext } from "../Contexts";
 import logo from "../assets/images/logo.svg";
 import moonIcon from "../assets/images/icon-moon.svg";
 import moonIconDark from "../assets/images/icon-moon-dark.svg";
 
-export default function Header({ setTheme }) {
+export default function Header({ setFontType, setTheme }) {
   const theme = useContext(ThemeContext);
+
+  function switchFont(e) {
+    const newFont = e.target.value;
+    setFontType(newFont);
+  }
 
   function switchTheme(e) {
     const newTheme = e.target.checked ? "dark" : "light";
@@ -23,10 +28,11 @@ export default function Header({ setTheme }) {
           name="font"
           id="font"
           className="w-30 border-none bg-white/0 text-sm font-bold leading-8 text-gray-dark dark:text-white"
+          onChange={switchFont}
         >
-          <option value="">Sans Serif</option>
-          <option value="">Serif</option>
-          <option value="">Mono</option>
+          <option value="sans">Sans Serif</option>
+          <option value="serif">Serif</option>
+          <option value="mono">Mono</option>
         </select>
 
         <hr className="h-0.25 w-8 rotate-90 text-gray-light" />
