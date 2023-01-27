@@ -13,10 +13,15 @@ export default function Meaning({ partOfSpeech, definitions, synonyms }) {
             className="mb-3 marker:text-purple"
             style={{ textIndent: "-2.3rem" }}
           >
-            <span className="ml-4 text-gray-dark">
-              {definition}
-              {example ? <q>{example}</q> : null}
-            </span>
+            <span className="ml-4 text-gray-dark">{definition}</span>
+            {example ? (
+              <p
+                className="mt-3 ml-1 w-full text-gray-lighter"
+                style={{ textIndent: "0" }}
+              >
+                "{example}"
+              </p>
+            ) : null}
           </li>
         ))}
       </ul>
