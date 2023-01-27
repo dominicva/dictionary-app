@@ -1,9 +1,8 @@
 import { useContext } from "react";
-import { FontContext, ThemeContext } from "../Contexts";
+import { ThemeContext } from "../Contexts";
 import logo from "../assets/images/logo.svg";
 import moonIcon from "../assets/images/icon-moon.svg";
 import moonIconDark from "../assets/images/icon-moon-dark.svg";
-import downArrow from "../assets/images/icon-arrow-down.svg";
 
 export default function Header({ setFontType, setTheme }) {
   const theme = useContext(ThemeContext);
@@ -11,6 +10,20 @@ export default function Header({ setFontType, setTheme }) {
   function switchFont(e) {
     const newFont = e.target.value;
     setFontType(newFont);
+
+    let fontFamily;
+    switch (newFont) {
+      case "sans":
+        fontFamily = "Inter, sans-serif";
+        break;
+      case "serif":
+        fontFamily = "Lora, serif";
+        break;
+      case "mono":
+        fontFamily = "Inconsolata, monospace";
+    }
+
+    window.document.documentElement.style.fontFamily = fontFamily;
   }
 
   function switchTheme(e) {
