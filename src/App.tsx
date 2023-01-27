@@ -64,14 +64,4 @@ function App() {
   );
 }
 
-// function Layout({ children }) {
-//   return (
-//     <div
-//       className={`h-screen overflow-scroll bg-white p-6 pb-12 font-${font} dark:bg-gray-darkest`}
-//     >
-//       {children}
-//     </div>
-//   );
-// }
-
 export default App;

@@ -11,17 +11,19 @@ export default function Results({
 }) {
   return (
     <section>
-      <div className="mb-8 flex justify-between">
+      <div className="mb-8 flex justify-between md:mb-10">
         <div>
-          <h1 className="mb-2 text-3xl dark:text-white">{word}</h1>
-          <p className="text-lg text-purple">{phonetic}</p>
+          <h1 className="mb-2 text-3xl dark:text-white md:mb-4 md:text-6xl">
+            {word}
+          </h1>
+          <p className="text-lg text-purple md:text-2xl">{phonetic}</p>
         </div>
         <button>
           <a href={audioUrl} target="_blank">
             <img
               src={playIcon}
               alt="Play button"
-              className="inline-block w-12"
+              className="inline-block w-12 md:w-20"
             />
           </a>
         </button>
