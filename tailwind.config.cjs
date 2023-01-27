@@ -24,6 +24,9 @@ module.exports = {
       borderWidth: {
         1: "1px",
       },
+      backgroundImage: {
+        downArrow: "url('./assets/images/icon-arrow-down.svg')",
+      },
     },
   },
   plugins: [require("@tailwindcss/forms")],

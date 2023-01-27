@@ -3,6 +3,7 @@ import { FontContext, ThemeContext } from "../Contexts";
 import logo from "../assets/images/logo.svg";
 import moonIcon from "../assets/images/icon-moon.svg";
 import moonIconDark from "../assets/images/icon-moon-dark.svg";
+import downArrow from "../assets/images/icon-arrow-down.svg";
 
 export default function Header({ setFontType, setTheme }) {
   const theme = useContext(ThemeContext);
@@ -27,7 +28,7 @@ export default function Header({ setFontType, setTheme }) {
         <select
           name="font"
           id="font"
-          className="w-30 border-none bg-white/0 text-sm font-bold leading-8 text-gray-dark dark:text-white"
+          className="w-30 appearance-none border-none bg-white bg-downArrow bg-auto bg-right bg-no-repeat pr-8 text-center text-sm font-bold leading-8 text-gray-dark dark:bg-opacity-0 dark:text-white"
           onChange={switchFont}
         >
           <option value="sans">Sans Serif</option>
