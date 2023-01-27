@@ -27,6 +27,9 @@ module.exports = {
       backgroundImage: {
         downArrow: "url('./assets/images/icon-arrow-down.svg')",
       },
+      playButton: {
+        backgroundImage: "url('./assets/images/icon-play.svg')",
+      },
     },
   },
   plugins: [require("@tailwindcss/forms")],

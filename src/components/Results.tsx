@@ -1,5 +1,6 @@
 import Meaning from "./Meaning";
 import newWindowIcon from "../assets/images/icon-new-window.svg";
+import playIcon from "../assets/images/icon-play.svg";
 
 export default function Results({
   word,
@@ -17,7 +18,11 @@ export default function Results({
         </div>
         <button>
           <a href={audioUrl} target="_blank">
-            Play
+            <img
+              src={playIcon}
+              alt="Play button"
+              className="inline-block w-12"
+            />
           </a>
         </button>
       </div>
