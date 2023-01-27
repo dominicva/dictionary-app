@@ -41,7 +41,7 @@ export default function Header({ setFontType, setTheme }) {
         <select
           name="font"
           id="font"
-          className="w-30 appearance-none border-none bg-white bg-downArrow bg-auto bg-right bg-no-repeat pr-8 text-center text-sm font-bold leading-8 text-gray-dark dark:bg-opacity-0 dark:text-white"
+          className="w-30 appearance-none border-none bg-white bg-downArrow bg-auto bg-right bg-no-repeat pr-8 text-center text-sm font-bold leading-8 text-gray-dark dark:bg-opacity-0 dark:text-white md:text-lg"
           onChange={switchFont}
         >
           <option value="sans">Sans Serif</option>

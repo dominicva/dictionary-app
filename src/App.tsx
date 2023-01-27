@@ -2,8 +2,8 @@ import { useState } from "react";
 import Header from "./components/Header";
 import Search from "./components/Search";
 import Results from "./components/Results";
-import { FontContext, ThemeContext } from "./Contexts";
 import Layout from "./components/Layout";
+import { FontContext, ThemeContext } from "./Contexts";
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -47,17 +47,19 @@ function App() {
     <ThemeContext.Provider value={theme}>
       <FontContext.Provider value={fontType}>
         <Layout>
-          <Header setFontType={setFontType} setTheme={setTheme} />
-          <Search onSubmit={handleSubmit} />
-          {meanings.length > 0 ? (
-            <Results
-              word={word}
-              phonetic={phonetic}
-              audioUrl={audioUrl}
-              source={source}
-              meanings={meanings}
-            />
-          ) : null}
+          <div className="m-auto max-w-3xl">
+            <Header setFontType={setFontType} setTheme={setTheme} />
+            <Search onSubmit={handleSubmit} />
+            {meanings.length > 0 ? (
+              <Results
+                word={word}
+                phonetic={phonetic}
+                audioUrl={audioUrl}
+                source={source}
+                meanings={meanings}
+              />
+            ) : null}
+          </div>
         </Layout>
       </FontContext.Provider>
     </ThemeContext.Provider>

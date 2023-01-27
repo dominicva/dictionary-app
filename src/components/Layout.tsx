@@ -6,7 +6,7 @@ export default function Layout({ children }) {
 
   return (
     <div
-      className={`h-screen overflow-scroll bg-white p-6 pb-12 md:p-10 font-${fontType} dark:bg-gray-darkest`}
+      className={`h-screen overflow-scroll bg-white p-6 pb-12 md:p-10 font-${fontType} m-auto dark:bg-gray-darkest`}
     >
       {children}
     </div>
