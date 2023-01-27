@@ -43,7 +43,7 @@ function App() {
 
   return (
     <ThemeContext.Provider value={theme}>
-      <div className={`bg-white p-6 dark:bg-black`}>
+      <Layout>
         <Header setTheme={setTheme} />
         <Search onSubmit={handleSubmit} />
         <Results
@@ -53,8 +53,14 @@ function App() {
           source={source}
           meanings={meanings}
         />
-      </div>
+      </Layout>
     </ThemeContext.Provider>
+  );
+}
+
+function Layout({ children }) {
+  return (
+    <div className="h-screen bg-white p-6 dark:bg-gray-darkest">{children}</div>
   );
 }
 
