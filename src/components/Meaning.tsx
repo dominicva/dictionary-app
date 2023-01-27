@@ -33,7 +33,15 @@ export default function Meaning({ partOfSpeech, definitions, synonyms }) {
         {partOfSpeech === "noun" && synonyms.length > 0 ? (
           <div className="flex gap-6">
             <h4 className="text-gray-lighter md:text-xl">Synonyms</h4>
-            <p className="font-bold text-purple md:text-xl">{synonyms[0]}</p>
+
+            {synonyms.map(synonym => (
+              <p
+                key={synonym}
+                className="font-bold text-purple hover:underline md:text-xl"
+              >
+                {synonym}
+              </p>
+            ))}
           </div>
         ) : null}
       </div>
