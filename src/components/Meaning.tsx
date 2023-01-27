@@ -30,7 +30,7 @@ export default function Meaning({ partOfSpeech, definitions, synonyms }) {
         ))}
       </ul>
       <div>
-        {partOfSpeech === "noun" ? (
+        {partOfSpeech === "noun" && synonyms.length > 0 ? (
           <div className="flex gap-6">
             <h4 className="text-gray-lighter">Synonyms</h4>
             <p className="font-bold text-purple">{synonyms[0]}</p>
