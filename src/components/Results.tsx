@@ -1,4 +1,5 @@
 import Meaning from "./Meaning";
+import newWindowIcon from "../assets/images/icon-new-window.svg";
 
 export default function Results({
   word,
@@ -30,11 +31,16 @@ export default function Results({
         />
       ))}
 
-      <hr className="mt-8 mb-6" />
+      <hr className="mt-8 mb-6 text-gray-light" />
       <div>
-        <h4>Source</h4>
-        <a href={source} target="_blank">
-          {source}
+        <h4>
+          <span className="border-b-1 text-sm text-gray-lighter">Source</span>
+        </h4>
+        <a href={source} target="_blank" className="flex gap-2 ">
+          <span className="border-b-1 border-gray-light text-sm text-gray-dark">
+            {source}
+          </span>
+          <img src={newWindowIcon} alt="external link" />
         </a>
       </div>
     </section>

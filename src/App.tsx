@@ -60,7 +60,7 @@ function App() {
 
 function Layout({ children }) {
   return (
-    <div className="h-screen bg-white p-6 pb-12 dark:bg-gray-darkest">
+    <div className="h-screen overflow-scroll bg-white p-6 pb-12 dark:bg-gray-darkest">
       {children}
     </div>
   );

@@ -20,7 +20,11 @@ module.exports = {
       purple: "#A445ED",
       crimson: "#FF5252",
     },
-    extend: {},
+    extend: {
+      borderWidth: {
+        1: "1px",
+      },
+    },
   },
   plugins: [require("@tailwindcss/forms")],
 };
