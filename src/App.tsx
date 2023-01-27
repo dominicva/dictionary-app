@@ -49,13 +49,15 @@ function App() {
         <Layout>
           <Header setFontType={setFontType} setTheme={setTheme} />
           <Search onSubmit={handleSubmit} />
-          <Results
-            word={word}
-            phonetic={phonetic}
-            audioUrl={audioUrl}
-            source={source}
-            meanings={meanings}
-          />
+          {meanings.length > 0 ? (
+            <Results
+              word={word}
+              phonetic={phonetic}
+              audioUrl={audioUrl}
+              source={source}
+              meanings={meanings}
+            />
+          ) : null}
         </Layout>
       </FontContext.Provider>
     </ThemeContext.Provider>
