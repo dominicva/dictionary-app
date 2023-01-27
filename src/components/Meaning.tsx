@@ -2,8 +2,10 @@ export default function Meaning({ partOfSpeech, definitions, synonyms }) {
   return (
     <div className="mb-8">
       <div className="mb-8 flex items-center gap-4">
-        <h2 className="font-bold italic text-gray-dark">{partOfSpeech}</h2>
-        <hr className="w-full text-gray-light" />
+        <h2 className="font-bold italic text-gray-dark dark:text-white">
+          {partOfSpeech}
+        </h2>
+        <hr className="w-full text-gray-light dark:text-gray" />
       </div>
       <h3 className="mb-4 text-gray-lighter">Meaning</h3>
       <ul className="ml-9 list-inside list-disc">
@@ -13,7 +15,9 @@ export default function Meaning({ partOfSpeech, definitions, synonyms }) {
             className="mb-3 marker:text-purple"
             style={{ textIndent: "-2.3rem" }}
           >
-            <span className="ml-4 text-gray-dark">{definition}</span>
+            <span className="ml-4 text-gray-dark dark:text-white">
+              {definition}
+            </span>
             {example ? (
               <p
                 className="mt-3 ml-1 w-full text-gray-lighter"

@@ -12,7 +12,7 @@ export default function Results({
     <section>
       <div className="mb-8 flex justify-between">
         <div>
-          <h1 className="mb-2 font-sans text-3xl">{word}</h1>
+          <h1 className="mb-2 font-sans text-3xl dark:text-white">{word}</h1>
           <p className="text-lg text-purple">{phonetic}</p>
         </div>
         <button>
@@ -31,13 +31,13 @@ export default function Results({
         />
       ))}
 
-      <hr className="mt-8 mb-6 text-gray-light" />
+      <hr className="mt-8 mb-6 text-gray-light dark:text-gray" />
       <div>
         <h4>
           <span className="border-b-1 text-sm text-gray-lighter">Source</span>
         </h4>
         <a href={source} target="_blank" className="flex gap-2 ">
-          <span className="border-b-1 border-gray-light text-sm text-gray-dark">
+          <span className="border-b-1 border-gray-light text-sm text-gray-dark dark:border-gray dark:text-gray-lighter">
             {source}
           </span>
           <img src={newWindowIcon} alt="external link" />
