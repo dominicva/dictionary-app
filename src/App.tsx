@@ -14,14 +14,18 @@ function App() {
   const [audioUrl, setAudioUrl] = useState("");
   const [source, setSource] = useState("");
   const [meanings, setMeanings] = useState([]);
-  const [error, setError] = useState(false);
+  const [APIError, setAPIError] = useState(false);
+  const [inputError, setInputError] = useState(false);
 
   async function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
-
     const word = e.target[0].value.trim();
 
-    if (word.length === 0) throw new Error("Whoops, can’t be empty...");
+    if (word.length > 0) {
+      setInputError(false);
+    } else {
+      setInputError(true);
+    }
 
     try {
       const res = await fetch(
@@ -41,12 +45,12 @@ function App() {
       setPhonetic(text);
       setAudioUrl(audio);
       setSource(sourceUrls[0] ?? "no source URL found");
-      setError(false);
+      setAPIError(false);
     } catch (error) {
       console.error(
         `ERROR: could not find definition for ${word}\n\n\t${error}`
       );
-      setError(true);
+      setAPIError(true);
     }
   }
 
@@ -56,8 +60,8 @@ function App() {
         <Layout>
           <div className="m-auto max-w-3xl">
             <Header setFontType={setFontType} setTheme={setTheme} />
-            <Search onSubmit={handleSubmit} />
-            {meanings.length > 0 && !error ? (
+            <Search inputError={inputError} onSubmit={handleSubmit} />
+            {meanings.length > 0 && !APIError ? (
               <Results
                 word={word}
                 phonetic={phonetic}
@@ -65,7 +69,7 @@ function App() {
                 source={source}
                 meanings={meanings}
               />
-            ) : (
+            ) : inputError ? null : (
               <NoResults />
             )}
           </div>
