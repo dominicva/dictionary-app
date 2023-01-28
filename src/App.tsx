@@ -4,6 +4,7 @@ import Search from "./components/Search";
 import Results from "./components/Results";
 import Layout from "./components/Layout";
 import { FontContext, ThemeContext } from "./Contexts";
+import NoResults from "./components/NoResults";
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -13,12 +14,16 @@ function App() {
   const [audioUrl, setAudioUrl] = useState("");
   const [source, setSource] = useState("");
   const [meanings, setMeanings] = useState([]);
+  const [error, setError] = useState(false);
 
   async function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
 
+    const word = e.target[0].value.trim();
+
+    if (word.length === 0) throw new Error("have to search for something...");
+
     try {
-      const word = e.target[0].value;
       const res = await fetch(
         `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
       ).then(r => r.json());
@@ -36,10 +41,12 @@ function App() {
       setPhonetic(text);
       setAudioUrl(audio);
       setSource(sourceUrls[0] ?? "no source URL found");
+      setError(false);
     } catch (error) {
       console.error(
         `ERROR: could not find definition for ${word}\n\n\t${error}`
       );
+      setError(true);
     }
   }
 
@@ -50,7 +57,7 @@ function App() {
           <div className="m-auto max-w-3xl">
             <Header setFontType={setFontType} setTheme={setTheme} />
             <Search onSubmit={handleSubmit} />
-            {meanings.length > 0 ? (
+            {meanings.length > 0 && !error ? (
               <Results
                 word={word}
                 phonetic={phonetic}
@@ -58,7 +65,9 @@ function App() {
                 source={source}
                 meanings={meanings}
               />
-            ) : null}
+            ) : (
+              <NoResults />
+            )}
           </div>
         </Layout>
       </FontContext.Provider>
