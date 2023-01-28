@@ -21,7 +21,7 @@ function App() {
 
     const word = e.target[0].value.trim();
 
-    if (word.length === 0) throw new Error("have to search for something...");
+    if (word.length === 0) throw new Error("Whoops, can’t be empty...");
 
     try {
       const res = await fetch(
