@@ -29,9 +29,9 @@ export default function Results({
         </button>
       </div>
 
-      {meanings.map(({ partOfSpeech, definitions, synonyms }) => (
+      {meanings.map(({ partOfSpeech, definitions, synonyms }, index) => (
         <Meaning
-          key={`${partOfSpeech}${Math.random()}`}
+          key={`${partOfSpeech}${index}`}
           partOfSpeech={partOfSpeech}
           definitions={definitions}
           synonyms={synonyms}

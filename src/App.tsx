@@ -9,7 +9,7 @@ import NoResults from "./components/NoResults";
 function App() {
   const [theme, setTheme] = useState("light");
   const [fontType, setFontType] = useState("sans");
-  const [word, setWord] = useState("");
+  const [word, setWord] = useState("keyboard");
   const [phonetic, setPhonetic] = useState("");
   const [audioUrl, setAudioUrl] = useState("");
   const [source, setSource] = useState("");
@@ -19,9 +19,10 @@ function App() {
 
   async function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
-    const word = e.target[0].value.trim();
 
-    if (word.length > 0) {
+    const inputWord = e.target[0].value.trim();
+
+    if (inputWord.length > 0) {
       setInputError(false);
     } else {
       setInputError(true);
@@ -29,9 +30,9 @@ function App() {
 
     try {
       const res = await fetch(
-        `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
+        `https://api.dictionaryapi.dev/api/v2/entries/en/${inputWord}`
       ).then(r => r.json());
-      const { meanings, phonetics, sourceUrls } = res[0];
+      const { word: newWord, meanings, phonetics, sourceUrls } = res[0];
       const { text, audio } = phonetics.find(
         o =>
           Object.hasOwn(o, "audio") &&
@@ -41,7 +42,7 @@ function App() {
       );
 
       setMeanings(meanings);
-      setWord(word);
+      setWord(newWord);
       setPhonetic(text);
       setAudioUrl(audio);
       setSource(sourceUrls[0] ?? "no source URL found");
