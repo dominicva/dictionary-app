@@ -38,18 +38,24 @@ export default function Results({
         />
       ))}
 
-      <hr className="mt-8 mb-6 text-gray-light dark:text-gray" />
-      <div>
-        <h4>
-          <span className="border-b-1 text-sm text-gray-lighter">Source</span>
-        </h4>
-        <a href={source} target="_blank" className="flex gap-2 ">
-          <span className="border-b-1 border-gray-light text-sm text-gray-dark dark:border-gray dark:text-gray-lighter">
-            {source}
-          </span>
-          <img src={newWindowIcon} alt="external link" />
-        </a>
-      </div>
+      {source ? (
+        <>
+          <hr className="mt-8 mb-6 text-gray-light dark:text-gray" />
+          <div>
+            <h4>
+              <span className="border-b-1 text-sm text-gray-lighter">
+                Source
+              </span>
+            </h4>
+            <a href={source} target="_blank" className="flex gap-2 ">
+              <span className="border-b-1 border-gray-light text-sm text-gray-dark dark:border-gray dark:text-gray-lighter">
+                {source}
+              </span>
+              <img src={newWindowIcon} alt="external link" />
+            </a>
+          </div>
+        </>
+      ) : null}
     </section>
   );
 }

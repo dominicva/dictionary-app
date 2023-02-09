@@ -9,7 +9,7 @@ import NoResults from "./components/NoResults";
 function App() {
   const [theme, setTheme] = useState("light");
   const [fontType, setFontType] = useState("sans");
-  const [word, setWord] = useState("keyboard");
+  const [word, setWord] = useState("");
   const [phonetic, setPhonetic] = useState("");
   const [audioUrl, setAudioUrl] = useState("");
   const [source, setSource] = useState("");
@@ -62,7 +62,9 @@ function App() {
           <div className="m-auto max-w-3xl">
             <Header setFontType={setFontType} setTheme={setTheme} />
             <Search inputError={inputError} onSubmit={handleSubmit} />
-            {meanings.length > 0 && !APIError ? (
+            {APIError || word.length === 0 ? (
+              <NoResults />
+            ) : (
               <Results
                 word={word}
                 phonetic={phonetic}
@@ -70,8 +72,6 @@ function App() {
                 source={source}
                 meanings={meanings}
               />
-            ) : inputError ? null : (
-              <NoResults />
             )}
           </div>
         </Layout>
