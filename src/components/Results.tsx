@@ -2,13 +2,7 @@ import Meaning from "./Meaning";
 import newWindowIcon from "../assets/images/icon-new-window.svg";
 import playIcon from "../assets/images/icon-play.svg";
 
-export default function Results({
-  word,
-  phonetic,
-  audioUrl,
-  source,
-  meanings,
-}) {
+export default function Results({ word, phonetic, audio, source, meanings }) {
   return (
     <section>
       <div className="mb-8 flex justify-between md:mb-10">
@@ -19,7 +13,7 @@ export default function Results({
           <p className="text-lg text-purple md:text-2xl">{phonetic}</p>
         </div>
         <button>
-          <a href={audioUrl} target="_blank">
+          <a href={audio} target="_blank">
             <img
               src={playIcon}
               alt="Play button"
